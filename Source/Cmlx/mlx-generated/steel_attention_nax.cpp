@@ -1786,8 +1786,8 @@ template <
       for (short iq = 0; iq < TQ; iq++) {
         STEEL_PRAGMA_UNROLL
         for (short ik = 0; ik < TK; ik++) {
-          const short row_pos = base_row + iq * UQ;
-          const short col_pos = base_col + ik * UK;
+          const int row_pos = base_row + iq * UQ;
+          const int col_pos = base_col + ik * UK;
 
           thread auto& fg = Ptile.subtile_at(iq, ik).frag_at(0, 0);
 
@@ -1820,8 +1820,8 @@ template <
       for (short iq = 0; iq < TQ; iq++) {
         STEEL_PRAGMA_UNROLL
         for (short ik = 0; ik < TK; ik++) {
-          const short row_pos = base_row + iq * UQ + sm;
-          const short col_pos = base_col + ik * UK + sn;
+          const int row_pos = base_row + iq * UQ + sm;
+          const int col_pos = base_col + ik * UK + sn;
 
           MSubTile mfrag;
           mfrag.load_safe(
